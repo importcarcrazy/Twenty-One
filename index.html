@@ -3,13 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Twenty-One</title>
+        <title>Twenty-Onek</title>
         <link rel="stylesheet" href="twenty-one.css">
         <script src="twenty-one.js"></script>
     </head>
 
     <body>
+        <h2>Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards">
+            <img id="hidden" src="./cards/BACK.png">
+        </div>
 
-        
+        <h2>You: <span id="your-sum"></span></h2>
+        <div id="your-cards"></div>
+
+        <br>
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <button id="Deal">Deal</button>
+        <p id="results"></p>
+        <h2>Score: <span id="tally"></span></h2>
     </body>
 </html>
