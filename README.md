@@ -2,19 +2,19 @@ Twenty-One
 Game Project for P1BG
 
 ***BlackJack Outline***
--Refactor game code
--Make card total live
--Add deal function
-    *To deal a fresh hand
-    *Continue to use the "shuffled deck"
-    *Only refresh/reschuffle the deck if "out" of cards
-        *Display a 3 second "New Deck" message
--Add score counter (loose = -1 / win = +1 / draw =+0)
-    *start with 10 points
-    *if points reach 0 display lose splash page
--Add "New Game" function
-    *To start a "fesh" game with 10 points again
--Redo the gamar result messages to be more impactful.
+- Refactor game code
+- Make card total live
+- Add deal function
+    * To deal a fresh hand
+    * Continue to use the "shuffled deck"
+    * Only refresh/reschuffle the deck if "out" of cards
+        * Display a 3 second "New Deck" message
+- Add score counter (loose = -1 / win = +1 / draw =+0)
+    * start with 10 points
+    * if points reach 0 display lose splash page
+- Add "New Game" function
+    * To start a "fesh" game with 10 points again
+- Redo the gamar result messages to be more impactful.
 
 
 
