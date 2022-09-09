@@ -1,6 +1,6 @@
 var dealerSum = 0;
 var yourSum = 0;
-var score = 5;
+var score = 10;
 
 var dealerAceCount = 0;
 var yourAceCount = 0; 
@@ -10,14 +10,17 @@ var deck;
 
 var canHit = true; //allows the player (you) to draw while yourSum <= 21
 
-function newGame() {
-    createDeck();
-    shuffleDeck();
+function deal() {
     startGame();
+}
+function newGame() {
+    location.reload();
 }
 
 window.onload = function () {
-    newGame();
+    createDeck();
+    shuffleDeck();
+    deal();
 }
 
 function createDeck() {
@@ -74,8 +77,8 @@ function startGame() {
     console.log(yourSum);
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
+    document.getElementById("deal").addEventListener("click", deal);
     document.getElementById("newGame").addEventListener("click", newGame);
-
 }
 
 function hit() {
