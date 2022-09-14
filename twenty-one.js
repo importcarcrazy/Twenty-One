@@ -11,6 +11,8 @@ var deck;
 var canHit = true; //allows the player (you) to draw while yourSum <= 21
 
 function deal() {
+    createDeck();
+    shuffleDeck();
     startGame();
 }
 function newGame() {
@@ -21,6 +23,7 @@ window.onload = function () {
     createDeck();
     shuffleDeck();
     deal();
+    document.getElementById("tally").innerText = score;
 }
 
 function createDeck() {
@@ -72,6 +75,8 @@ function startGame() {
         document.getElementById("your-cards").append(cardImg);
     }
 
+    
+
     //countPlayer();
 
     console.log(yourSum);
@@ -104,10 +109,13 @@ function countPlayer(){
     document.getElementById("your-sum").innerText = yourSum;
 }
 
+function gameEnd(){
+
+}
+
 function stay() {
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
-
     canHit = false;
     document.getElementById("hidden").src = "./cards/" + hidden + ".png";
 
@@ -135,11 +143,20 @@ function stay() {
         message = "You Lose!";
         score--;
     }
+    let gameMessage = "";
+    if (score >= 21) {
+        gameMessage = "YOU'VE WON THE GAME!";
+    }
+    else if (score <= 0) {
+        gameMessage = "YOU'VE LOST HE GAME";
+    }
 
     document.getElementById("dealer-sum").innerText = dealerSum;
-    document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
+    countPlayer();
     document.getElementById("tally").innerText = score;
+//    gameEnd();
+    document.getElementById("gameResults").innerText = gameMessage;
 }
 
 function getValue(card) {
