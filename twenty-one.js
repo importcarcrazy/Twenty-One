@@ -1,5 +1,5 @@
-var dealerSum = 0;
 var yourSum = 0;
+var dealerSum = 0;
 var score = 10;
 
 var dealerAceCount = 0;
@@ -9,6 +9,7 @@ var hidden;
 var deck;
 
 var canHit = true; //allows the player (you) to draw while yourSum <= 21
+var canStay = true; //stops the player (you) from going > 21 or < 0
 
 function deal() {
     createDeck();
@@ -75,11 +76,8 @@ function startGame() {
         document.getElementById("your-cards").append(cardImg);
     }
 
-    
-
-    //countPlayer();
-
     console.log(yourSum);
+    countPlayer();
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("deal").addEventListener("click", deal);
@@ -100,7 +98,7 @@ function hit() {
     if (reduceAce(yourSum, yourAceCount) > 21) { //A, J, 8 -> 1 + 10 + 8
         canHit = false;
     }
-    //countPlayer();
+    countPlayer();
 
 }
 
@@ -109,18 +107,16 @@ function countPlayer(){
     document.getElementById("your-sum").innerText = yourSum;
 }
 
-function gameEnd(){
-
-}
-
 function stay() {
+    if (!canStay) {
+        return;
+    }
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
     canHit = false;
     document.getElementById("hidden").src = "./cards/" + hidden + ".png";
 
     let message = "";
-    //both you and dealer <= 21
     if (yourSum == dealerSum) {
         message = "Tie!";
     }
@@ -146,16 +142,23 @@ function stay() {
     let gameMessage = "";
     if (score >= 21) {
         gameMessage = "YOU'VE WON THE GAME!";
+        canStay = false;
     }
     else if (score <= 0) {
         gameMessage = "YOU'VE LOST HE GAME";
+        canStay = false;
+    }
+    else if (score >= 1) {
+        canStay = true;
+    }    
+    else if (score <= 20) {
+        canStay = true;
     }
 
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("results").innerText = message;
     countPlayer();
     document.getElementById("tally").innerText = score;
-//    gameEnd();
     document.getElementById("gameResults").innerText = gameMessage;
 }
 
