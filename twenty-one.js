@@ -12,10 +12,20 @@ var canHit = true; //allows the player (you) to draw while yourSum <= 21
 var canStay = true; //stops the player (you) from going > 21 or < 0
 
 function deal() {
+  //  document.getElementById("your-cards").remove(cardImg);
+  //  document.getElementById("your-cards").empty(cardImg);\
+
     createDeck();
     shuffleDeck();
+    yourSum = 0;
+    dealerSum = 0;
+    dealerAceCount = 0;
+    yourAceCount = 0; 
+    canHit = true; //allows the player (you) to draw while yourSum <= 21
+    canStay = true; //stops the player (you) from going > 21 or < 0
     startGame();
 }
+
 function newGame() {
     location.reload();
 }
@@ -23,7 +33,9 @@ function newGame() {
 window.onload = function () {
     createDeck();
     shuffleDeck();
-    deal();
+    createDeck();
+    shuffleDeck();
+    startGame();
     document.getElementById("tally").innerText = score;
 }
 
